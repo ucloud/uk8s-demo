@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  labels:
+    k8s-app: etcd
+  name: etcd
+  namespace: kube-system
+subsets:
+- addresses:
+  - ip: 10.7.35.44 # 替换成master节点的内网IP
+    nodeName: etc-master2
+  ports:
+  - name: port
+    port: 2379
+    protocol: TCP
+- addresses:
+  - ip: 10.7.163.60 # 同上
+    nodeName: etc-master1
+  ports:
+  - name: port
+    port: 2379
+    protocol: TCP
+- addresses:
+  - ip: 10.7.142.140 #同上
+    nodeName: etc-master3
+  ports:
+  - name: port
+    port: 2379
+    protocol: TCP

@@ -1,0 +1,54 @@
+# 由于UK8S的controller-manager和scheduler为二进制方式部署，因此需要手动创建endPoints。
+apiVersion: v1                                                                                                                     
+kind: Endpoints                                                                                                                    
+metadata:                                                                                                                          
+  labels:                                                                                                                          
+    k8s-app: kube-controller-manager                                                                                               
+  name: kube-controller-manager                                                                                                    
+  namespace: kube-system                                                                                                           
+subsets:                                                                                                                           
+- addresses:                                                                                                                       
+  - ip: 10.7.35.44 #替换成UK8S Master Node 的内网IP                                                                                                                
+  ports:                                                                                                                           
+  - name: http-metrics                                                                                                             
+    port: 10252                                                                                                                    
+    protocol: TCP                                                                                                                  
+- addresses:                                                                                                                       
+  - ip: 10.7.163.60  #同上                                                                                                              
+  ports:                                                                                                                           
+  - name: http-metrics                                                                                                             
+    port: 10252                                                                                                                    
+    protocol: TCP                                                                                                                  
+- addresses:                                                                                                                       
+  - ip: 10.7.142.140  #同上                                                                                                             
+  ports:                                                                                                                           
+  - name: http-metrics                                                                                                             
+    port: 10252                                                                                                                    
+    protocol: TCP
+---
+apiVersion: v1                                                                                                                     
+kind: Endpoints                                                                                                                    
+metadata:                                                                                                                          
+  labels:                                                                                                                          
+    k8s-app: kube-scheduler                                                                                                        
+  name: kube-scheduler                                                                                                             
+  namespace: kube-system                                                                                                           
+subsets:                                                                                                                           
+- addresses:                                                                                                                       
+  - ip: 10.7.35.44  #同上                                                                                                               
+  ports:                                                                                                                           
+  - name: http-metrics                                                                                                             
+    port: 10251                                                                                                                    
+    protocol: TCP                                                                                                                  
+- addresses:                                                                                                                       
+  - ip: 10.7.163.60  #同上                                                                                                              
+  ports:                                                                                                                           
+  - name: http-metrics                                                                                                             
+    port: 10251                                                                                                                    
+    protocol: TCP                                                                                                                  
+- addresses:                                                                                                                       
+  - ip: 10.7.142.140  #同上                                                                                                             
+  ports:                                                                                                                           
+  - name: http-metrics                                                                                                             
+    port: 10251                                                                                                                    
+    protocol: TCP
