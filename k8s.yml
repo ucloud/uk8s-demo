@@ -1,8 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins-k8s-cicd
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-k8s-cicd
   template:
     metadata:
       labels:
