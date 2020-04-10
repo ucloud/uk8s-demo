@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: kube-system
-  name: kube-controller-manager
+  name: kube-controller-manager-manual
   labels:
     k8s-app: kube-controller-manager
 spec:
@@ -18,7 +18,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: kube-system
-  name: kube-scheduler
+  name: kube-scheduler-manual
   labels:
     k8s-app: kube-scheduler
 spec:
