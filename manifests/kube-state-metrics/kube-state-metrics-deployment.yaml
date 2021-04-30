@@ -15,6 +15,10 @@ spec:
       labels:
         app: kube-state-metrics
     spec:
+      volumes:
+        - name: host-time
+          hostPath:
+            path: /etc/localtime
       containers:
       - args:
         - --logtostderr
@@ -23,6 +27,10 @@ spec:
         - --upstream=http://127.0.0.1:8081/
         image: uhub.service.ucloud.cn/uk8s_public/kube-rbac-proxy:v0.4.1
         name: kube-rbac-proxy-main
+        volumeMounts:
+        - name: host-time
+          mountPath: /etc/localtime
+          readOnly: true
         ports:
         - containerPort: 8443
           name: https-main
