@@ -1,6 +1,6 @@
 podTemplate(containers: [
-    containerTemplate(name: 'golang', image: 'uhub.service.ucloud.cn/uk8s/golang:1.16.12', ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'kubectl', image: 'uhub.service.ucloud.cn/uk8s/kubectl:latest', command: 'cat', ttyEnabled: true),
+    containerTemplate(name: 'golang', image: 'uhub.service.ucloud.cn/uk8sdemo/golang:1.16.12', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'kubectl', image: 'uhub.service.ucloud.cn/uk8sdemo/kubectl:latest', command: 'cat', ttyEnabled: true),
   ],
   yaml: """\
 apiVersion: v1
@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
   - name: kaniko
-    image: uhub.service.ucloud.cn/uk8s/executor:debug
+    image: uhub.service.ucloud.cn/uk8sdemo/executor:debug
     command:
     - /busybox/cat
     tty: true
